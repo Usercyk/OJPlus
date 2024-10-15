@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/oj_plus">
+        <file>images/favicon.png</file>
+
+        <file>i18n/oj_plus.zh_CN.qm</file>
+    </qresource>
+</RCC>
