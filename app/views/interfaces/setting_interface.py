@@ -28,6 +28,8 @@ class SettingInterface(ScrollArea):
         self.__create_widgets()
         # set up widgets
         self.__setup_widgets()
+        # fix bugs
+        self.fix_wheel_events()
 
     def __create_widgets(self) -> None:
         """
@@ -150,6 +152,14 @@ class SettingInterface(ScrollArea):
             duration=1500,
             parent=self
         )
+
+    def fix_wheel_events(self) -> None:
+        """
+        Fix wheel events
+        """
+        self.theme_card.wheelEvent = self.scroll_widget.wheelEvent
+        self.theme_color_card.wheelEvent = self.scroll_widget.wheelEvent
+        self.zoom_card.wheelEvent = self.scroll_widget.wheelEvent
 
 
 # set all
