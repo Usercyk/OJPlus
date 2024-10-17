@@ -8,3 +8,4 @@
 
 from .style_sheet import *
 from .signal import *
+from .icons import *

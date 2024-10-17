@@ -14,7 +14,7 @@ VERSION = __version__
 AUTHOR = __author__
 
 # path setting
-CONFIG_PATH = "app/configs/config.json"
+CONFIG_PATH = "app/config.json"
 
 # window
 SIZE = (960, 780)

@@ -13,7 +13,7 @@ from qfluentwidgets import (ScrollArea, ExpandLayout, SettingCardGroup, SwitchSe
 from qfluentwidgets import FluentIcon as FIF
 
 from configs import cfg, INTERFACE_SIZE, is_win11
-from utils import StyleSheet, signal_bus
+from utils import StyleSheet, signal_bus, AppIcon
 
 
 class SettingInterface(ScrollArea):
@@ -53,7 +53,7 @@ class SettingInterface(ScrollArea):
             self.personal_group
         )
         self.navigation_acrylic_card = SwitchSettingCard(
-            FIF.TRANSPARENT,
+            AppIcon.ACRYLIC,
             self.tr("Navigation acrylic effect"),
             self.tr("Apply acrylic to the side navigation bar"),
             cfg.navigationAcrylicEnabled,

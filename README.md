@@ -16,3 +16,5 @@ We are looking for contributors to help improve our project by providing test da
 ## License
 
 According to the GPLv3 license of the `qfluentwidget` library, this project will also licensed by GPLv3. Thanks to the author `zhiyiyo` for such good components.
+
+Thanks to the icon from <https://fluenticon.com/>
