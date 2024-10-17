@@ -14,7 +14,7 @@ from qfluentwidgets import (FluentWindow, SplashScreen,
 from qfluentwidgets import FluentIcon as FIF
 
 from views.interfaces import SettingInterface
-from configs import SIZE, MIN_WIDTH, ICON_SIZE
+from configs import SIZE, MIN_WIDTH, ICON_SIZE, cfg
 from utils import signal_bus
 from resources import resource_rc  # pylint: disable=W0611
 
@@ -43,6 +43,8 @@ class MainWindow(FluentWindow):
         self.splash_screen.finish()
         # start theme listener
         self.theme_listener.start()
+        # reset mica effect according to the `cfg`
+        self.reset_mica_effect()
 
     def connect_signals(self) -> None:
         """
@@ -123,3 +125,9 @@ class MainWindow(FluentWindow):
         if self.isMicaEffectEnabled():
             QTimer.singleShot(100, lambda: self.windowEffect.setMicaEffect(
                 self.winId(), isDarkTheme()))
+
+    def reset_mica_effect(self) -> None:
+        """
+        Reset mica effect
+        """
+        self.setMicaEffectEnabled(cfg.get(cfg.micaEnabled))

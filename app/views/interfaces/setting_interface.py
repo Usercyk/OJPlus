@@ -105,6 +105,7 @@ class SettingInterface(ScrollArea):
         self.setting_label.setObjectName('settingLabel')
         StyleSheet.SETTING_INTERFACE.apply(self)
 
+        # disable the card setting
         self.mica_card.setEnabled(is_win11())
 
         # init layout

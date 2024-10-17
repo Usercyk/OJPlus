@@ -42,6 +42,7 @@ class EntryPoint:
 
         # The qt app
         # ! cannot sepearte into different method
+        # ! different closures will affect the result
         app = QApplication(argv)
         app.setAttribute(
             Qt.ApplicationAttribute.AA_DontCreateNativeWidgetSiblings)
