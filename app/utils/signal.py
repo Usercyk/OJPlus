@@ -13,6 +13,7 @@ class _SignalBus(QObject):
     Signal bus
     """
     micaEnableChanged = Signal(bool)
+    navigationAcrylicEnableChanged = Signal(bool)
 
 
 signal_bus = _SignalBus()

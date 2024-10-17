@@ -34,7 +34,8 @@ class MainWindow(FluentWindow):
         # create sub interface
         self.create_sub_interface()
         # set acrylic effect
-        self.navigationInterface.setAcrylicEnabled(True)
+        self.navigationInterface.setAcrylicEnabled(
+            cfg.get(cfg.navigationAcrylicEnabled))
         # connect signals
         self.connect_signals()
         # init sub interfaces
@@ -43,14 +44,14 @@ class MainWindow(FluentWindow):
         self.splash_screen.finish()
         # start theme listener
         self.theme_listener.start()
-        # reset mica effect according to the `cfg`
-        self.reset_mica_effect()
 
     def connect_signals(self) -> None:
         """
         Create signals to slots
         """
         signal_bus.micaEnableChanged.connect(self.setMicaEffectEnabled)
+        signal_bus.navigationAcrylicEnableChanged.connect(
+            self.navigationInterface.setAcrylicEnabled)
 
     def create_sub_interface(self) -> None:
         """
@@ -74,6 +75,9 @@ class MainWindow(FluentWindow):
         self.resize(*SIZE)
         self.setMinimumWidth(MIN_WIDTH)
         self.setWindowIcon(QIcon(":/oj_plus/images/favicon.png"))
+
+        # bug-fix: auto set mica true
+        self.reset_mica_effect()
 
         # init splash screen
         self.splash_screen = SplashScreen(self.windowIcon(), self)

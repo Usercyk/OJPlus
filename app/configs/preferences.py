@@ -25,6 +25,8 @@ class _Config(QConfig):
     # main window
     micaEnabled = ConfigItem("MainWindow", "MicaEnabled",
                              is_win11(), BoolValidator())
+    navigationAcrylicEnabled = ConfigItem(
+        "MainWindow", "MicaEnabled", True, BoolValidator())
     dpiScale = OptionsConfigItem("MainWindow", "DpiScale", "Auto", OptionsValidator(
         [1, 1.25, 1.5, 1.75, 2, "Auto"]), restart=True)
     language = OptionsConfigItem("MainWindow", "Language", Language.AUTO, OptionsValidator(

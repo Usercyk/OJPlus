@@ -2,7 +2,7 @@
     "MainWindow": {
         "DpiScale": "Auto",
         "Language": "Auto",
-        "MicaEnabled": false
+        "MicaEnabled": true
     },
     "QFluentWidgets": {
         "ThemeColor": "#ff009faa",

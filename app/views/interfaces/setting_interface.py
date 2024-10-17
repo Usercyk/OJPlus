@@ -52,6 +52,13 @@ class SettingInterface(ScrollArea):
             cfg.micaEnabled,
             self.personal_group
         )
+        self.navigation_acrylic_card = SwitchSettingCard(
+            FIF.TRANSPARENT,
+            self.tr("Navigation acrylic effect"),
+            self.tr("Apply acrylic to the side navigation bar"),
+            cfg.navigationAcrylicEnabled,
+            self.personal_group
+        )
         self.theme_card = OptionsSettingCard(
             cfg.themeMode,
             FIF.BRUSH,
@@ -121,6 +128,7 @@ class SettingInterface(ScrollArea):
         self.setting_label.move(36, 30)
 
         self.personal_group.addSettingCard(self.mica_card)
+        self.personal_group.addSettingCard(self.navigation_acrylic_card)
         self.personal_group.addSettingCard(self.theme_card)
         self.personal_group.addSettingCard(self.theme_color_card)
         self.personal_group.addSettingCard(self.zoom_card)
@@ -141,6 +149,8 @@ class SettingInterface(ScrollArea):
         cfg.themeChanged.connect(setTheme)
         self.theme_color_card.colorChanged.connect(setThemeColor)
         self.mica_card.checkedChanged.connect(signal_bus.micaEnableChanged)
+        self.navigation_acrylic_card.checkedChanged.connect(
+            signal_bus.navigationAcrylicEnableChanged)
 
     def __show_restart_tooltip(self) -> None:
         """
