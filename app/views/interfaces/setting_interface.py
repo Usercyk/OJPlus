@@ -5,11 +5,11 @@
 @Author      :   Usercyk
 @Description :   The setting interface
 """
-from PySide6.QtWidgets import QWidget, QLabel
+from PySide6.QtWidgets import QWidget, QLabel, QFileDialog
 from PySide6.QtCore import Qt
 from qfluentwidgets import (ScrollArea, ExpandLayout, SettingCardGroup, SwitchSettingCard,
                             OptionsSettingCard, CustomColorSettingCard, ComboBoxSettingCard,
-                            InfoBar, setTheme, setThemeColor)
+                            InfoBar, setTheme, setThemeColor, PushSettingCard)
 from qfluentwidgets import FluentIcon as FIF
 
 from configs import cfg, INTERFACE_SIZE, is_win11
@@ -42,6 +42,35 @@ class SettingInterface(ScrollArea):
         # setting label
         self.setting_label = QLabel(self.tr("Settings"), self)
 
+        # executables
+        self.executable_group = SettingCardGroup(
+            self.tr("Executables"), self.scroll_widget)
+
+        self.python_card = PushSettingCard(
+            self.tr("Choose path"),
+            AppIcon.PYTHON,
+            self.tr("Python path"),
+            cfg.get(cfg.pythonPath),
+            self.executable_group
+        )
+
+        self.c_card = PushSettingCard(
+            self.tr("Choose path"),
+            AppIcon.C,
+            self.tr("C path"),
+            cfg.get(cfg.cPath),
+            self.executable_group
+        )
+
+        self.cpp_card = PushSettingCard(
+            self.tr("Choose path"),
+            AppIcon.CPP,
+            self.tr("Cpp path"),
+            cfg.get(cfg.cppPath),
+            self.executable_group
+        )
+
+        # personalization
         self.personal_group = SettingCardGroup(
             self.tr('Personalization'), self.scroll_widget)
 
@@ -127,6 +156,10 @@ class SettingInterface(ScrollArea):
         """
         self.setting_label.move(36, 30)
 
+        self.executable_group.addSettingCard(self.python_card)
+        self.executable_group.addSettingCard(self.c_card)
+        self.executable_group.addSettingCard(self.cpp_card)
+
         self.personal_group.addSettingCard(self.mica_card)
         self.personal_group.addSettingCard(self.navigation_acrylic_card)
         self.personal_group.addSettingCard(self.theme_card)
@@ -137,6 +170,7 @@ class SettingInterface(ScrollArea):
         # add setting card group to layout
         self.expand_layout.setSpacing(28)
         self.expand_layout.setContentsMargins(36, 10, 36, 0)
+        self.expand_layout.addWidget(self.executable_group)
         self.expand_layout.addWidget(self.personal_group)
 
     def __connect_signal(self) -> None:
@@ -145,12 +179,50 @@ class SettingInterface(ScrollArea):
         """
         cfg.appRestartSig.connect(self.__show_restart_tooltip)
 
+        # executables
+        self.python_card.clicked.connect(self.__on_python_card_clicked)
+        self.c_card.clicked.connect(self.__on_c_card_clicked)
+        self.cpp_card.clicked.connect(self.__on_cpp_card_clicked)
+
         # personalization
         cfg.themeChanged.connect(setTheme)
         self.theme_color_card.colorChanged.connect(setThemeColor)
         self.mica_card.checkedChanged.connect(signal_bus.micaEnableChanged)
         self.navigation_acrylic_card.checkedChanged.connect(
             signal_bus.navigationAcrylicEnableChanged)
+
+    def __on_c_card_clicked(self) -> None:
+        """
+        Deal with c path
+        """
+        c_path = QFileDialog.getOpenFileName(
+            self, self.tr("Choose c path"), "./", "*.exe")[0]
+        if c_path == "" or cfg.get(cfg.cPath) == c_path:
+            return
+        cfg.set(cfg.cPath, c_path)
+        self.c_card.setContent(c_path)
+
+    def __on_cpp_card_clicked(self) -> None:
+        """
+        Deal with cpp path
+        """
+        cpp_path = QFileDialog.getOpenFileName(
+            self, self.tr("Choose cpp path"), "./", "*.exe")[0]
+        if cpp_path == "" or cfg.get(cfg.cppPath) == cpp_path:
+            return
+        cfg.set(cfg.cppPath, cpp_path)
+        self.cpp_card.setContent(cpp_path)
+
+    def __on_python_card_clicked(self) -> None:
+        """
+        Deal with python path
+        """
+        python_path = QFileDialog.getOpenFileName(
+            self, self.tr("Choose python path"), "./", "python.exe")[0]
+        if python_path == "" or cfg.get(cfg.pythonPath) == python_path:
+            return
+        cfg.set(cfg.pythonPath, python_path)
+        self.python_card.setContent(python_path)
 
     def __show_restart_tooltip(self) -> None:
         """

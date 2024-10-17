@@ -22,6 +22,11 @@ def is_win11() -> bool:
 
 
 class _Config(QConfig):
+    # excutable paths
+    pythonPath = ConfigItem("Executable", "PythonPath", "python")
+    cPath = ConfigItem("Executable", "CPath", "gcc")
+    cppPath = ConfigItem("Executable", "CppPath", "g++")
+
     # main window
     micaEnabled = ConfigItem("MainWindow", "MicaEnabled",
                              is_win11(), BoolValidator())

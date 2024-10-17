@@ -14,6 +14,9 @@ class AppIcon(FluentIconBase, Enum):
     Provide more icons
     """
     ACRYLIC = "acrylic"
+    PYTHON = "python"
+    C = "c"
+    CPP = "cpp"
 
     def path(self, theme=Theme.AUTO):
         """

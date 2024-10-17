@@ -3,8 +3,14 @@
         <file>images/favicon.png</file>
 
         <file>images/icons/acrylic_white.svg</file>
+        <file>images/icons/python_white.svg</file>
+        <file>images/icons/c_white.svg</file>
+        <file>images/icons/cpp_white.svg</file>
 
         <file>images/icons/acrylic_black.svg</file>
+        <file>images/icons/python_black.svg</file>
+        <file>images/icons/c_black.svg</file>
+        <file>images/icons/cpp_black.svg</file>
 
         <file>qss/dark/setting_interface.qss</file>
 

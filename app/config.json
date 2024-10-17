@@ -1,4 +1,9 @@
 {
+    "Executable": {
+        "CPath": "D:/mingw64/bin/gcc.exe",
+        "CppPath": "gcc",
+        "PythonPath": "python"
+    },
     "MainWindow": {
         "DpiScale": "Auto",
         "Language": "Auto",
