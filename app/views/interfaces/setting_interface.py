@@ -7,12 +7,15 @@
 """
 from PySide6.QtWidgets import QWidget, QLabel, QFileDialog
 from PySide6.QtCore import Qt
-from qfluentwidgets import (ScrollArea, ExpandLayout, SettingCardGroup, SwitchSettingCard,
-                            OptionsSettingCard, CustomColorSettingCard, ComboBoxSettingCard,
-                            InfoBar, setTheme, setThemeColor, PushSettingCard)
+from PySide6.QtGui import QDesktopServices
+from qfluentwidgets import (ScrollArea, ExpandLayout, SettingCardGroup,
+                            SwitchSettingCard, OptionsSettingCard, CustomColorSettingCard,
+                            ComboBoxSettingCard, InfoBar, setTheme,
+                            setThemeColor, PushSettingCard, PrimaryPushSettingCard, HyperlinkCard)
 from qfluentwidgets import FluentIcon as FIF
 
-from configs import cfg, INTERFACE_SIZE, is_win11
+from configs import (cfg, INTERFACE_SIZE, is_win11, YEAR,
+                     AUTHOR, VERSION, REPO_RELEASE_URL, REPO_WIKI_URL)
 from utils import StyleSheet, signal_bus, AppIcon
 
 
@@ -126,6 +129,27 @@ class SettingInterface(ScrollArea):
             parent=self.personal_group
         )
 
+        # about
+        self.about_group = SettingCardGroup(
+            self.tr("About"), self.scroll_widget)
+
+        self.wiki_card = HyperlinkCard(
+            REPO_WIKI_URL,
+            self.tr("Open wiki page"),
+            FIF.HELP,
+            self.tr("Help"),
+            self.tr("Learn useful tips to use OJ Plus"),
+            self.about_group
+        )
+        self.about_card = PrimaryPushSettingCard(
+            self.tr('Check update'),
+            FIF.INFO,
+            self.tr('About'),
+            '© ' + self.tr('Copyright') + f" {YEAR}, {AUTHOR}. " +
+            self.tr('Version') + " " + VERSION,
+            self.about_group
+        )
+
     def __setup_widgets(self) -> None:
         """
         Set up widgets
@@ -167,11 +191,15 @@ class SettingInterface(ScrollArea):
         self.personal_group.addSettingCard(self.zoom_card)
         self.personal_group.addSettingCard(self.language_card)
 
+        self.about_group.addSettingCard(self.wiki_card)
+        self.about_group.addSettingCard(self.about_card)
+
         # add setting card group to layout
         self.expand_layout.setSpacing(28)
         self.expand_layout.setContentsMargins(36, 10, 36, 0)
         self.expand_layout.addWidget(self.executable_group)
         self.expand_layout.addWidget(self.personal_group)
+        self.expand_layout.addWidget(self.about_group)
 
     def __connect_signal(self) -> None:
         """
@@ -190,6 +218,10 @@ class SettingInterface(ScrollArea):
         self.mica_card.checkedChanged.connect(signal_bus.micaEnableChanged)
         self.navigation_acrylic_card.checkedChanged.connect(
             signal_bus.navigationAcrylicEnableChanged)
+
+        # about
+        self.about_card.clicked.connect(
+            lambda: QDesktopServices.openUrl(REPO_RELEASE_URL))
 
     def __on_c_card_clicked(self) -> None:
         """

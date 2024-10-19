@@ -1,4 +1,4 @@
-SettingInterface, #scrollWidget {
+JudgeInterface, #scrollWidget {
     background-color: transparent;
 }
 
@@ -7,10 +7,15 @@ QScrollArea {
     background-color: transparent;
 }
 
-
 /* 标签 */
-QLabel#settingLabel {
+QLabel#judgeLabel {
     font: 33px 'Microsoft YaHei Light';
+    background-color: transparent;
+    color: white;
+}
+
+QLabel#chooseLanguageLabel {
+    font: 15px 'Microsoft YaHei';
     background-color: transparent;
     color: white;
 }

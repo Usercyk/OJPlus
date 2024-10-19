@@ -7,8 +7,8 @@
 """
 import sys
 
-from qfluentwidgets import (QConfig, qconfig, ConfigItem,
-                            OptionsConfigItem, BoolValidator, OptionsValidator, Theme)
+from qfluentwidgets import (QConfig, qconfig, ConfigItem, OptionsConfigItem,
+                            BoolValidator, OptionsValidator, Theme)
 
 from .settings import CONFIG_PATH
 from .language import Language, LanguageSerializer
@@ -36,7 +36,6 @@ class _Config(QConfig):
         [1, 1.25, 1.5, 1.75, 2, "Auto"]), restart=True)
     language = OptionsConfigItem("MainWindow", "Language", Language.AUTO, OptionsValidator(
         Language), LanguageSerializer(), restart=True)
-
 
 cfg = _Config()
 cfg.themeMode.value = Theme.AUTO

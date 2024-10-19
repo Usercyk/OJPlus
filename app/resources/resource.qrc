@@ -13,8 +13,12 @@
         <file>images/icons/cpp_black.svg</file>
 
         <file>qss/dark/setting_interface.qss</file>
+        <file>qss/dark/home_interface.qss</file>
+        <file>qss/dark/judge_interface.qss</file>
 
         <file>qss/light/setting_interface.qss</file>
+        <file>qss/light/home_interface.qss</file>
+        <file>qss/light/judge_interface.qss</file>
 
         <file>i18n/oj_plus.zh_CN.qm</file>
         <file>i18n/oj_plus.zh_HK.qm</file>

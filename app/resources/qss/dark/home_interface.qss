@@ -1,4 +1,4 @@
-SettingInterface, #scrollWidget {
+HomeInterface, #scrollWidget {
     background-color: transparent;
 }
 
@@ -7,9 +7,8 @@ QScrollArea {
     background-color: transparent;
 }
 
-
 /* 标签 */
-QLabel#settingLabel {
+QLabel#homeLabel {
     font: 33px 'Microsoft YaHei Light';
     background-color: transparent;
     color: white;

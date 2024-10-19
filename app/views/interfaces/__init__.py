@@ -6,3 +6,5 @@
 @Description :   The interfaces module
 """
 from .setting_interface import *
+from .home_interface import *
+from .judge_interface import *

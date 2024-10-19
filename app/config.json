@@ -1,7 +1,7 @@
 {
     "Executable": {
-        "CPath": "D:/mingw64/bin/gcc.exe",
-        "CppPath": "gcc",
+        "CPath": "gcc",
+        "CppPath": "g++",
         "PythonPath": "python"
     },
     "MainWindow": {
@@ -10,7 +10,7 @@
         "MicaEnabled": true
     },
     "QFluentWidgets": {
-        "ThemeColor": "#ff0078d4",
+        "ThemeColor": "#ff009faa",
         "ThemeMode": "Auto"
     }
 }

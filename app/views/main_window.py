@@ -13,7 +13,7 @@ from qfluentwidgets import (FluentWindow, SplashScreen,
                             SystemThemeListener, NavigationItemPosition, isDarkTheme)
 from qfluentwidgets import FluentIcon as FIF
 
-from views.interfaces import SettingInterface
+from views.interfaces import SettingInterface, HomeInterface, JudgeInterface
 from configs import SIZE, MIN_WIDTH, ICON_SIZE, cfg
 from utils import signal_bus
 from resources import resource_rc  # pylint: disable=W0611
@@ -57,12 +57,18 @@ class MainWindow(FluentWindow):
         """
         Create and set sub interface
         """
+        self.home_interface = HomeInterface(self)
+        self.judge_interface = JudgeInterface(self)
         self.setting_interface = SettingInterface(self)
 
     def init_navigations(self) -> None:
         """
         Init navigations, the sub interfaces
         """
+        self.addSubInterface(self.home_interface, FIF.HOME, self.tr("Home"))
+        self.navigationInterface.addSeparator()
+        self.addSubInterface(self.judge_interface, FIF.APPLICATION, self.tr(
+            "Judge"), NavigationItemPosition.SCROLL)
         self.addSubInterface(self.setting_interface, FIF.SETTING, self.tr(
             'Settings'), NavigationItemPosition.BOTTOM)
 
