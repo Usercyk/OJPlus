@@ -12,7 +12,7 @@ from PySide6.QtCore import Qt
 from qfluentwidgets import (ScrollArea, ExpandLayout, BodyLabel,
                             ComboBox, LineEdit, PrimaryPushButton)
 
-from configs import INTERFACE_SIZE, SUPPORT_LANGUAGE
+from configs import INTERFACE_SIZE, SUPPORT_LANGUAGE, cfg
 from utils import StyleSheet
 
 
@@ -85,6 +85,9 @@ class JudgeInterface(ScrollArea):
         self.choose_language_label.setAlignment(Qt.AlignmentFlag.AlignVCenter)
         self.choose_language_combobox.addItems(SUPPORT_LANGUAGE)
 
+        self.input_directory_edit.setText(cfg.get(cfg.input_directory))
+        self.output_directory_edit.setText(cfg.get(cfg.output_directory))
+
         # initialize style sheet
         self.scroll_widget.setObjectName('scrollWidget')
         self.judge_label.setObjectName('judgeLabel')
@@ -135,6 +138,10 @@ class JudgeInterface(ScrollArea):
             self.__on_input_directory_button_clicked)
         self.output_directory_button.clicked.connect(
             self.__on_output_directory_button_clicked)
+        self.input_directory_edit.textChanged.connect(
+            lambda x: cfg.set(cfg.input_directory, x))
+        self.output_directory_edit.textChanged.connect(
+            lambda x: cfg.set(cfg.output_directory, x))
 
     def __on_input_directory_button_clicked(self) -> None:
         """

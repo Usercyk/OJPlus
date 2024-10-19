@@ -9,6 +9,10 @@
         "Language": "Auto",
         "MicaEnabled": true
     },
+    "Folders": {
+        "inputDirectory": "D:/Documents",
+        "outputDirectory": "C:/Users/Usercyk"
+    },
     "QFluentWidgets": {
         "ThemeColor": "#ff009faa",
         "ThemeMode": "Auto"
