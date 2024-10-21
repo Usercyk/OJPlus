@@ -21,4 +21,4 @@ Thanks to the icon from <https://fluenticon.com/>
 
 ## Known bugs
 
-1. **Mica effect disabled after close the file dialog**: That's the bug of `mica` effect itself. This will happen while you are charging your computer. Try to set your charging policy or simply re-focus `J Plus` by pressing the screen out of the window or something else.
+1. **Mica effect disabled after closing the file dialog**: That's the bug of `mica` effect itself. This will happen while you are charging your computer. Try to set your charging policy or simply re-focus `J Plus` by pressing the screen out of the window or something else.
