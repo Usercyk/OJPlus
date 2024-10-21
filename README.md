@@ -18,3 +18,7 @@ We are looking for contributors to help improve our project by providing test da
 According to the GPLv3 license of the `qfluentwidget` library, this project will also licensed by GPLv3. Thanks to the author `zhiyiyo` for such good components.
 
 Thanks to the icon from <https://fluenticon.com/>
+
+## Known bugs
+
+1. **Mica effect disabled after close the file dialog**: That's the bug of `mica` effect itself. This will happen while you are charging your computer. Try to set your charging policy or simply re-focus `J Plus` by pressing the screen out of the window or something else.

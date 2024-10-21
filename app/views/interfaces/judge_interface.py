@@ -7,7 +7,7 @@
 """
 
 from PySide6.QtWidgets import (QWidget, QLabel, QHBoxLayout,
-                               QVBoxLayout, QFileDialog)
+                               QVBoxLayout, QFileDialog, QSizePolicy)
 from PySide6.QtCore import Qt
 from qfluentwidgets import (ScrollArea, ExpandLayout, BodyLabel,
                             ComboBox, LineEdit, PrimaryPushButton)
@@ -44,11 +44,16 @@ class JudgeInterface(ScrollArea):
         self.setting_widget = QWidget(self.scroll_widget)
         self.setting_layout = QVBoxLayout(self.setting_widget)
 
-        self.choose_language_widget = QWidget(self.setting_widget)
-        self.choose_language_layout = QHBoxLayout(self.choose_language_widget)
+        self.language_file_widget = QWidget(self.setting_widget)
+        self.language_file_layout = QHBoxLayout(self.language_file_widget)
         self.choose_language_label = BodyLabel(
-            self.tr("Language: "), self.choose_language_widget)
-        self.choose_language_combobox = ComboBox(self.choose_language_widget)
+            self.tr("Language: "), self.language_file_widget)
+        self.choose_language_combobox = ComboBox(self.language_file_widget)
+        self.choose_file_label = BodyLabel(
+            self.tr("Code File: "), self.language_file_widget)
+        self.choose_file_combobox = ComboBox(self.language_file_widget)
+        self.choose_file_button = PrimaryPushButton(
+            self.tr("Choose file"), self.language_file_widget)
 
         self.input_directory_widget = QWidget(self.setting_widget)
         self.input_directory_layout = QHBoxLayout(self.input_directory_widget)
@@ -82,8 +87,11 @@ class JudgeInterface(ScrollArea):
         # set up sub widgets
         self.setting_widget.setMaximumHeight(210)
 
-        self.choose_language_label.setAlignment(Qt.AlignmentFlag.AlignVCenter)
         self.choose_language_combobox.addItems(SUPPORT_LANGUAGE)
+        self.choose_file_combobox.setSizePolicy(
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        self.choose_file_combobox.addItem(self.tr("Submit with plain text"))
+        self.choose_file_combobox.addItem(self.tr("<Empty File>"))
 
         self.input_directory_edit.setText(cfg.get(cfg.input_directory))
         self.output_directory_edit.setText(cfg.get(cfg.output_directory))
@@ -115,14 +123,18 @@ class JudgeInterface(ScrollArea):
         self.output_directory_layout.addWidget(self.output_directory_edit)
         self.output_directory_layout.addWidget(self.output_directory_button)
 
-        self.choose_language_layout.setSpacing(10)
-        self.choose_language_layout.setContentsMargins(0, 0, 0, 5)
-        self.choose_language_layout.addWidget(self.choose_language_label)
-        self.choose_language_layout.addWidget(self.choose_language_combobox)
+        self.language_file_layout.setSpacing(10)
+        self.language_file_layout.setContentsMargins(0, 0, 0, 5)
+        self.language_file_layout.addWidget(self.choose_language_label)
+        self.language_file_layout.addWidget(self.choose_language_combobox)
+        self.language_file_layout.addSpacing(5)
+        self.language_file_layout.addWidget(self.choose_file_label)
+        self.language_file_layout.addWidget(self.choose_file_combobox)
+        self.language_file_layout.addWidget(self.choose_file_button)
 
         self.setting_layout.addWidget(self.input_directory_widget)
         self.setting_layout.addWidget(self.output_directory_widget)
-        self.setting_layout.addWidget(self.choose_language_widget)
+        self.setting_layout.addWidget(self.language_file_widget)
 
         self.setting_widget.adjustSize()
 
@@ -134,6 +146,9 @@ class JudgeInterface(ScrollArea):
         """
         Connect signals to slots
         """
+        self.choose_file_button.clicked.connect(
+            self.__on_choose_file_button_clicked
+        )
         self.input_directory_button.clicked.connect(
             self.__on_input_directory_button_clicked)
         self.output_directory_button.clicked.connect(
@@ -142,6 +157,18 @@ class JudgeInterface(ScrollArea):
             lambda x: cfg.set(cfg.input_directory, x))
         self.output_directory_edit.textChanged.connect(
             lambda x: cfg.set(cfg.output_directory, x))
+
+    def __on_choose_file_button_clicked(self) -> None:
+        """
+        Open dialogue when click button
+        """
+        path = QFileDialog.getOpenFileName(
+            self, self.tr("Choose code file"),
+            "./", self.tr("Code Files")+"(*.py *.c *.cpp);;"+self.tr("All files")+"(*)")[0]
+        if path == "":
+            return
+        self.choose_file_combobox.setItemText(1, path)
+        self.choose_file_combobox.setCurrentIndex(1)
 
     def __on_input_directory_button_clicked(self) -> None:
         """

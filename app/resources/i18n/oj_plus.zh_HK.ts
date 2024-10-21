@@ -22,28 +22,53 @@
         <translation>編程語言：</translation>
     </message>
     <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="53"/>
+        <source>Code File: </source>
+        <translation>代碼文件：</translation>
+    </message>
+    <message>
         <location filename="../../views/interfaces/judge_interface.py" line="56"/>
+        <source>Choose file</source>
+        <translation>選擇文件</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="61"/>
         <source>Input directory:    </source>
         <translation>輸入文件夾：</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="59"/>
-        <location filename="../../views/interfaces/judge_interface.py" line="68"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="64"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="73"/>
         <source>Choose folder</source>
         <translation>選擇文件夾</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="160"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="162"/>
+        <source>Choose code file</source>
+        <translation>選擇代碼文件</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="163"/>
+        <source>Code Files</source>
+        <translation>代碼文件</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="163"/>
+        <source>All files</source>
+        <translation>所有文件</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="185"/>
         <source>Choose output directory</source>
         <translation>選擇輸出路徑</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="65"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="70"/>
         <source>Output directory: </source>
         <translation>輸出文件夾：</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="149"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="174"/>
         <source>Choose input directory</source>
         <translation>選擇輸入路徑</translation>
     </message>
