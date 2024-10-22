@@ -10,7 +10,8 @@ import subprocess
 FILES = ["app/views/main_window.py",
          "app/views/interfaces/setting_interface.py",
          "app/views/interfaces/home_interface.py",
-         "app/views/interfaces/judge_interface.py"]
+         "app/views/interfaces/judge_interface.py",
+         "app/utils/test_code.py"]
 TARGET = ["app/resources/i18n/oj_plus.zh_CN.ts",
           "app/resources/i18n/oj_plus.zh_HK.ts"]
 

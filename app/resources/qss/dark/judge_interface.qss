@@ -13,9 +13,3 @@ QLabel#judgeLabel {
     background-color: transparent;
     color: white;
 }
-
-QLabel#chooseLanguageLabel {
-    font: 15px 'Microsoft YaHei';
-    background-color: transparent;
-    color: white;
-}

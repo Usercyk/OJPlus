@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 from wsgiref import validate
 from qfluentwidgets import (QConfig, qconfig, ConfigItem, OptionsConfigItem,
-                            BoolValidator, OptionsValidator, Theme, ConfigValidator)
+                            BoolValidator, OptionsValidator, Theme, ConfigValidator, FolderValidator)
 
 from .settings import CONFIG_PATH
 from .language import Language, LanguageSerializer
@@ -53,6 +53,8 @@ class _Config(QConfig):
         "Folders", "inputDirectory", CustomFolderValidator.home(), CustomFolderValidator())
     output_directory = ConfigItem(
         "Folders", "outputDirectory", CustomFolderValidator.home(), CustomFolderValidator())
+    temp_directory = ConfigItem(
+        "Folders", "tempDirectory", "app/temp", FolderValidator())
 
     # main window
     micaEnabled = ConfigItem("MainWindow", "MicaEnabled",

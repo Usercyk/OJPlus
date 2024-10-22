@@ -73,6 +73,14 @@ class SettingInterface(ScrollArea):
             self.executable_group
         )
 
+        self.temp_card = PushSettingCard(
+            self.tr('Choose folder'),
+            FIF.FOLDER,
+            self.tr("Temp directory"),
+            cfg.get(cfg.temp_directory),
+            self.executable_group
+        )
+
         # personalization
         self.personal_group = SettingCardGroup(
             self.tr('Personalization'), self.scroll_widget)
@@ -183,6 +191,7 @@ class SettingInterface(ScrollArea):
         self.executable_group.addSettingCard(self.python_card)
         self.executable_group.addSettingCard(self.c_card)
         self.executable_group.addSettingCard(self.cpp_card)
+        self.executable_group.addSettingCard(self.temp_card)
 
         self.personal_group.addSettingCard(self.mica_card)
         self.personal_group.addSettingCard(self.navigation_acrylic_card)
@@ -211,6 +220,7 @@ class SettingInterface(ScrollArea):
         self.python_card.clicked.connect(self.__on_python_card_clicked)
         self.c_card.clicked.connect(self.__on_c_card_clicked)
         self.cpp_card.clicked.connect(self.__on_cpp_card_clicked)
+        self.temp_card.clicked.connect(self.__on_temp_card_clicked)
 
         # personalization
         cfg.themeChanged.connect(setTheme)
@@ -222,6 +232,18 @@ class SettingInterface(ScrollArea):
         # about
         self.about_card.clicked.connect(
             lambda: QDesktopServices.openUrl(REPO_RELEASE_URL))
+
+    def __on_temp_card_clicked(self) -> None:
+        """
+        Deal with temp folder
+        """
+        folder = QFileDialog.getExistingDirectory(
+            self, self.tr("Choose folder"), "./")
+        if not folder or cfg.get(cfg.temp_directory) == folder:
+            return
+
+        cfg.set(cfg.temp_directory, folder)
+        self.temp_card.setContent(folder)
 
     def __on_c_card_clicked(self) -> None:
         """

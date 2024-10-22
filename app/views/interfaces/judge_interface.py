@@ -5,21 +5,25 @@
 @Author      :   Usercyk
 @Description :   The judge machine interface
 """
-
+from typing import override
 from PySide6.QtWidgets import (QWidget, QLabel, QHBoxLayout,
                                QVBoxLayout, QFileDialog, QSizePolicy)
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, Signal, QDir, QFileInfo
+from PySide6.QtGui import QKeyEvent
 from qfluentwidgets import (ScrollArea, ExpandLayout, BodyLabel,
-                            ComboBox, LineEdit, PrimaryPushButton)
+                            ComboBox, LineEdit, PrimaryPushButton,
+                            TextBrowser)
 
 from configs import INTERFACE_SIZE, SUPPORT_LANGUAGE, cfg
-from utils import StyleSheet
+from utils import StyleSheet, CodeTester
+from views.components import CodeEdit
 
 
 class JudgeInterface(ScrollArea):
     """
     The judge interface
     """
+    run_signal = Signal(str, str, str, str, bool)
 
     def __init__(self, parent) -> None:
         # super
@@ -28,6 +32,76 @@ class JudgeInterface(ScrollArea):
         self.__create_widgets()
         # set up widgets
         self.__setup_widgets()
+        # code tester
+        self.__create_code_tester()
+
+    def __create_code_tester(self) -> None:
+        """
+        Create code tester
+        """
+        self.code_tester = CodeTester()
+        self.code_tester.result_ready.connect(self.handle_result)
+        self.code_tester.error_occurred.connect(self.handle_error)
+        self.code_tester.compilation_started.connect(
+            self.handle_compilation_start)
+        self.code_tester.compilation_finished.connect(
+            self.handle_compilation_finish)
+        self.code_tester.validation_error.connect(self.handle_validation_error)
+        self.run_signal.connect(self.code_tester.start_testing)
+
+    def handle_compilation_start(self) -> None:
+        """
+        Show compilation process
+        """
+        self.result_browser.setMarkdown(self.tr("Start compiling..."))
+
+    def handle_compilation_finish(self, success: bool, message: str):
+        """
+        Show compilation process
+        """
+        if success:
+            self.result_browser.append(
+                self.tr("Compile succeed. Start Testing..."))
+        else:
+            self.result_browser.append(self.tr("Compile error: ")+"\n"+message)
+
+    def handle_validation_error(self, error_msg):
+        """
+        Validation error
+        """
+        self.result_browser.append(self.tr("Invalid paths: ")+error_msg)
+
+    def handle_result(self, test_name: str, result: bool, output: str):
+        """
+        Result
+        """
+        status = self.tr("Accepted") if result else self.tr("Wrong Answer")
+        self.result_browser.append(self.tr("Test ")+f"{test_name}: {status}")
+        if not result:
+            self.result_browser.append(
+                self.tr("Your output: ")+f"\n{output}")
+
+    def handle_error(self, test_name, error_msg):
+        """
+        Error
+        """
+        self.result_browser.append(
+            self.tr("Test ")+test_name+self.tr(" error: ")+f"\n{error_msg}")
+
+    def validate_paths(self, file_path, input_path, output_path, is_file=False):
+        """
+        Validate all paths
+        """
+        if is_file and (not QFileInfo(file_path).exists() or not QFileInfo(file_path).isFile()):
+            return False, self.tr("Invalid file: ")+file_path
+
+        if not QDir(input_path).exists():
+            return False, self.tr("Invalid directory: ")+input_path
+
+        if not QDir(output_path).exists():
+            return False, self.tr("Invalid directory: ")+output_path
+
+        return True, ""
 
     def __create_widgets(self) -> None:
         """
@@ -40,11 +114,12 @@ class JudgeInterface(ScrollArea):
         # judge label
         self.judge_label = QLabel(self.tr("Judge"), self)
 
-        # setting
-        self.setting_widget = QWidget(self.scroll_widget)
-        self.setting_layout = QVBoxLayout(self.setting_widget)
+        # sub widgets
+        self.sub_widget = QWidget(self.scroll_widget)
+        self.sub_v_layout = QVBoxLayout(self.sub_widget)
 
-        self.language_file_widget = QWidget(self.setting_widget)
+        # set code language and code file
+        self.language_file_widget = QWidget(self.sub_widget)
         self.language_file_layout = QHBoxLayout(self.language_file_widget)
         self.choose_language_label = BodyLabel(
             self.tr("Language: "), self.language_file_widget)
@@ -55,7 +130,8 @@ class JudgeInterface(ScrollArea):
         self.choose_file_button = PrimaryPushButton(
             self.tr("Choose file"), self.language_file_widget)
 
-        self.input_directory_widget = QWidget(self.setting_widget)
+        # choose input directory
+        self.input_directory_widget = QWidget(self.sub_widget)
         self.input_directory_layout = QHBoxLayout(self.input_directory_widget)
         self.input_directory_label = BodyLabel(
             self.tr("Input directory:    "), self.input_directory_widget)
@@ -63,7 +139,8 @@ class JudgeInterface(ScrollArea):
         self.input_directory_button = PrimaryPushButton(
             self.tr("Choose folder"), self.input_directory_widget)
 
-        self.output_directory_widget = QWidget(self.setting_widget)
+        # choose output directory
+        self.output_directory_widget = QWidget(self.sub_widget)
         self.output_directory_layout = QHBoxLayout(
             self.output_directory_widget)
         self.output_directory_label = BodyLabel(
@@ -71,6 +148,12 @@ class JudgeInterface(ScrollArea):
         self.output_directory_edit = LineEdit(self.output_directory_widget)
         self.output_directory_button = PrimaryPushButton(
             self.tr("Choose folder"), self.output_directory_widget)
+
+        # edit code
+        self.code_result_widget = QWidget(self.sub_widget)
+        self.code_result_layout = QHBoxLayout(self.code_result_widget)
+        self.code_edit = CodeEdit(self.code_result_widget)
+        self.result_browser = TextBrowser(self.code_result_widget)
 
     def __setup_widgets(self) -> None:
         """
@@ -85,7 +168,8 @@ class JudgeInterface(ScrollArea):
         self.setObjectName('judgeInterface')
 
         # set up sub widgets
-        self.setting_widget.setMaximumHeight(210)
+        self.sub_widget.setSizePolicy(
+            QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
 
         self.choose_language_combobox.addItems(SUPPORT_LANGUAGE)
         self.choose_file_combobox.setSizePolicy(
@@ -96,9 +180,16 @@ class JudgeInterface(ScrollArea):
         self.input_directory_edit.setText(cfg.get(cfg.input_directory))
         self.output_directory_edit.setText(cfg.get(cfg.output_directory))
 
+        self.code_edit.setPlaceholderText(
+            self.tr("Type your code here if you submit your code with plain text."))
+        self.result_browser.setText(
+            self.tr("Waiting to submit... \nPress shift+Enter to submit."))
+        self.code_result_widget.setMinimumHeight(450)
+
         # initialize style sheet
         self.scroll_widget.setObjectName('scrollWidget')
         self.judge_label.setObjectName('judgeLabel')
+        self.sub_widget.setObjectName('subWidget')
         StyleSheet.JUDGE_INTERFACE.apply(self)
 
         # init layout
@@ -132,15 +223,21 @@ class JudgeInterface(ScrollArea):
         self.language_file_layout.addWidget(self.choose_file_combobox)
         self.language_file_layout.addWidget(self.choose_file_button)
 
-        self.setting_layout.addWidget(self.input_directory_widget)
-        self.setting_layout.addWidget(self.output_directory_widget)
-        self.setting_layout.addWidget(self.language_file_widget)
+        self.code_result_layout.setSpacing(10)
+        self.code_result_layout.setContentsMargins(0, 0, 0, 5)
+        self.code_result_layout.addWidget(self.code_edit)
+        self.code_result_layout.addWidget(self.result_browser)
 
-        self.setting_widget.adjustSize()
+        self.sub_v_layout.addWidget(self.input_directory_widget)
+        self.sub_v_layout.addWidget(self.output_directory_widget)
+        self.sub_v_layout.addWidget(self.language_file_widget)
+        self.sub_v_layout.addWidget(self.code_result_widget)
+
+        self.sub_widget.adjustSize()
 
         self.expand_layout.setSpacing(28)
         self.expand_layout.setContentsMargins(36, 10, 36, 0)
-        self.expand_layout.addWidget(self.setting_widget)
+        self.expand_layout.addWidget(self.sub_widget)
 
     def __connect_signal(self) -> None:
         """
@@ -191,3 +288,38 @@ class JudgeInterface(ScrollArea):
         if not path:
             return
         self.output_directory_edit.setText(path)
+
+    def __test_code(self) -> None:
+        """
+        Test code
+        """
+        if not self.code_tester.isRunning():
+            self.result_browser.clear()
+            self.result_browser.append(self.tr("Start validate paths"))
+            is_file = self.choose_file_combobox.currentIndex() == 1
+
+            file_path = self.choose_file_combobox.currentText(
+            ) if is_file else self.code_edit.toPlainText()
+            input_path = self.input_directory_edit.text()
+            output_path = self.output_directory_edit.text()
+
+            is_valid, error_message = self.validate_paths(
+                file_path, input_path, output_path, is_file)
+            if not is_valid:
+                self.result_browser.append(
+                    self.tr("Validation error: \n")+error_message)
+                return
+
+            language = self.choose_language_combobox.currentText()
+
+            self.result_browser.append(
+                self.tr("Validation succeed. Start running..."))
+            self.run_signal.emit(language, file_path,
+                                 input_path, output_path, is_file)
+        else:
+            self.result_browser.append(self.tr("Already running a test..."))
+
+    @override
+    def keyPressEvent(self, e: QKeyEvent):
+        if e.modifiers() == Qt.KeyboardModifier.ShiftModifier and e.key() == Qt.Key.Key_Return:
+            self.__test_code()
