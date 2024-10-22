@@ -77,9 +77,9 @@ class JudgeInterface(ScrollArea):
         """
         status = self.tr("Accepted") if result else self.tr("Wrong Answer")
         self.result_browser.append(self.tr("Test ")+f"{test_name}: {status}")
-        if not result:
-            self.result_browser.append(
-                self.tr("Your output: ")+f"\n{output}")
+        # if not result:
+        #     self.result_browser.append(
+        #         self.tr("Your output: ")+f"\n{output}")
 
     def handle_error(self, test_name, error_msg):
         """

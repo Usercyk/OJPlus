@@ -171,7 +171,7 @@ class CodeTester(QThread):
                 if exit_code != 0:
                     error_output = output_data.data().decode()
                     self.error_occurred.emit(
-                        test_name, self.tr("Runtime error (code: ")+exit_code+f")\n{error_output}")
+                        test_name, self.tr("Runtime error (code: ")+f"{exit_code})\n{error_output}")
                     continue
 
                 actual_output = output_data.data().decode().strip()
