@@ -3,5 +3,6 @@ __pycache__/
 
 test/
 temp/
+deployment/
 
 config.json

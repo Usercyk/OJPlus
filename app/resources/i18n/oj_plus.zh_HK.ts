@@ -4,52 +4,52 @@
 <context>
     <name>CodeTester</name>
     <message>
-        <location filename="../../utils/test_code.py" line="57"/>
-        <source>No file permission: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../utils/test_code.py" line="45"/>
-        <location filename="../../utils/test_code.py" line="60"/>
+        <location filename="../../utils/test_code.py" line="47"/>
         <location filename="../../utils/test_code.py" line="63"/>
+        <location filename="../../utils/test_code.py" line="66"/>
         <source>No directory permission: </source>
-        <translation type="unfinished"></translation>
+        <translation>無法訪問文件夾：</translation>
     </message>
     <message>
-        <location filename="../../utils/test_code.py" line="68"/>
+        <location filename="../../utils/test_code.py" line="60"/>
+        <source>No file permission: </source>
+        <translation>無法訪問文件：</translation>
+    </message>
+    <message>
+        <location filename="../../utils/test_code.py" line="71"/>
         <source>Unknown validation error: </source>
-        <translation type="unfinished"></translation>
+        <translation>文件驗證出現錯誤</translation>
     </message>
     <message>
-        <location filename="../../utils/test_code.py" line="108"/>
         <location filename="../../utils/test_code.py" line="111"/>
+        <location filename="../../utils/test_code.py" line="114"/>
         <source>Compile Time Limit Error</source>
-        <translation type="unfinished"></translation>
+        <translation>編譯超時</translation>
     </message>
     <message>
-        <location filename="../../utils/test_code.py" line="118"/>
+        <location filename="../../utils/test_code.py" line="121"/>
         <source>Compile Success</source>
-        <translation type="unfinished"></translation>
+        <translation>編譯成功</translation>
     </message>
     <message>
-        <location filename="../../utils/test_code.py" line="143"/>
+        <location filename="../../utils/test_code.py" line="140"/>
         <source>No output file: </source>
-        <translation type="unfinished"></translation>
+        <translation>缺少正確輸出文件</translation>
     </message>
     <message>
-        <location filename="../../utils/test_code.py" line="180"/>
+        <location filename="../../utils/test_code.py" line="166"/>
         <source>Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>超時</translation>
     </message>
     <message>
-        <location filename="../../utils/test_code.py" line="190"/>
+        <location filename="../../utils/test_code.py" line="175"/>
         <source>Runtime error (code: </source>
-        <translation type="unfinished"></translation>
+        <translation>運行時出錯 (錯誤碼：</translation>
     </message>
     <message>
-        <location filename="../../utils/test_code.py" line="200"/>
+        <location filename="../../utils/test_code.py" line="184"/>
         <source>Unknown error: </source>
-        <translation type="unfinished"></translation>
+        <translation>出現未知錯誤：</translation>
     </message>
 </context>
 <context>
@@ -63,164 +63,165 @@
 <context>
     <name>JudgeInterface</name>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="89"/>
-        <source> error: </source>
-        <translation type="unfinished"></translation>
+        <location filename="../../views/interfaces/judge_interface.py" line="51"/>
+        <source>Test finished</source>
+        <translation>運行結束</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="115"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="58"/>
+        <source>Start compiling...</source>
+        <translation>開始編譯…</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="66"/>
+        <source>Compile succeed. Start Testing...</source>
+        <translation>編譯成功，開始測試代碼…</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="68"/>
+        <source>Compile error: </source>
+        <translation>編譯錯誤：</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="74"/>
+        <source>Invalid paths: </source>
+        <translation>文件路徑無效：</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="80"/>
+        <source>Accepted</source>
+        <translation>通過</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="81"/>
+        <source>Wrong Answer</source>
+        <translation>答案錯誤</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="81"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="91"/>
+        <source>Test </source>
+        <translation>測試</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="91"/>
+        <source> error: </source>
+        <translation>錯誤：</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="98"/>
+        <source>Invalid file: </source>
+        <translation>文件路徑無效：</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="101"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="104"/>
+        <source>Invalid directory: </source>
+        <translation>文件夾路徑無效：</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="117"/>
         <source>Judge</source>
         <translation>評測</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="125"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="127"/>
         <source>Language: </source>
         <translation>編程語言：</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="128"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="130"/>
         <source>Code File: </source>
-        <translation>代碼文件：</translation>
+        <translation>代碼提交：</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="131"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="133"/>
         <source>Choose file</source>
         <translation>選擇文件</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="137"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="139"/>
         <source>Input directory:    </source>
-        <translation>輸入文件夾：</translation>
+        <translation>輸入文件夾路徑：</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="140"/>
-        <location filename="../../views/interfaces/judge_interface.py" line="150"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="142"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="152"/>
         <source>Choose folder</source>
         <translation>選擇文件夾</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="177"/>
-        <source>Submit with plain text</source>
-        <translation>以純文本形式提交</translation>
+        <location filename="../../views/interfaces/judge_interface.py" line="149"/>
+        <source>Output directory: </source>
+        <translation>輸出文件夾路徑：</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="178"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="179"/>
+        <source>Submit with plain text</source>
+        <translation>使用文本提交</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="180"/>
         <source>&lt;Empty File&gt;</source>
         <translation>&lt;空&gt;</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/judge_interface.py" line="186"/>
-        <source>Waiting to submit... 
-Press shift+Enter to submit.</source>
-        <translation type="unfinished"></translation>
+        <source>Type your code here if you submit your code with plain text.</source>
+        <translation>在此處輸入妳的代碼</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="263"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="188"/>
+        <source>Waiting to submit... 
+Press shift+Enter to submit.</source>
+        <translation>等待代碼提交……
+按下shift+回車進行提交</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="265"/>
         <source>Choose code file</source>
         <translation>選擇代碼文件</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="264"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="266"/>
         <source>Code Files</source>
         <translation>代碼文件</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="264"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="266"/>
         <source>All files</source>
         <translation>所有文件</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="287"/>
-        <source>Choose output directory</source>
-        <translation>選擇輸出路徑</translation>
+        <location filename="../../views/interfaces/judge_interface.py" line="278"/>
+        <source>Choose input directory</source>
+        <translation>選擇輸入文件夾</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="310"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="289"/>
+        <source>Choose output directory</source>
+        <translation>選擇輸出文件夾</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="300"/>
+        <source>Start validate paths</source>
+        <translation>開始驗證所選文件及文件夾路徑</translation>
+    </message>
+    <message>
+        <location filename="../../views/interfaces/judge_interface.py" line="312"/>
         <source>Validation error: 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>路徑驗證錯誤：</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="147"/>
-        <source>Output directory: </source>
-        <translation>輸出文件夾：</translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="56"/>
-        <source>Start compiling...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="64"/>
-        <source>Compile succeed. Start Testing...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="66"/>
-        <source>Compile error: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="72"/>
-        <source>Invalid paths: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="78"/>
-        <source>Accepted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="79"/>
-        <source>Wrong Answer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="79"/>
-        <location filename="../../views/interfaces/judge_interface.py" line="89"/>
-        <source>Test </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="82"/>
-        <source>Your output: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="96"/>
-        <source>Invalid file: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="99"/>
-        <location filename="../../views/interfaces/judge_interface.py" line="102"/>
-        <source>Invalid directory: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="184"/>
-        <source>Type your code here if you submit your code with plain text.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="276"/>
-        <source>Choose input directory</source>
-        <translation>選擇輸入路徑</translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="298"/>
-        <source>Start validate paths</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="316"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="318"/>
         <source>Validation succeed. Start running...</source>
-        <translation type="unfinished"></translation>
+        <translation>路徑驗證成功，開始運行…</translation>
     </message>
     <message>
-        <location filename="../../views/interfaces/judge_interface.py" line="320"/>
+        <location filename="../../views/interfaces/judge_interface.py" line="322"/>
         <source>Already running a test...</source>
-        <translation type="unfinished"></translation>
+        <translation>存在運行中測試，請勿重復提交…</translation>
     </message>
 </context>
 <context>
@@ -243,7 +244,7 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/main_window.py" line="80"/>
         <source>OJ Plus</source>
-        <translation>OJ小幫手</translation>
+        <translation>OJ 小幫手</translation>
     </message>
 </context>
 <context>
@@ -256,24 +257,24 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="50"/>
         <source>Executables</source>
-        <translation>編譯器</translation>
+        <translation>軟件</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="53"/>
         <location filename="../../views/interfaces/setting_interface.py" line="61"/>
         <location filename="../../views/interfaces/setting_interface.py" line="69"/>
         <source>Choose path</source>
-        <translation>選擇路徑</translation>
+        <translation>選擇文件</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="55"/>
         <source>Python path</source>
-        <translation>Python路徑</translation>
+        <translation>Python 路徑</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="63"/>
         <source>C path</source>
-        <translation>C路徑</translation>
+        <translation>C 路徑</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="71"/>
@@ -284,12 +285,12 @@ Press shift+Enter to submit.</source>
         <location filename="../../views/interfaces/setting_interface.py" line="77"/>
         <location filename="../../views/interfaces/setting_interface.py" line="241"/>
         <source>Choose folder</source>
-        <translation type="unfinished">選擇文件夾</translation>
+        <translation>選擇文件夾</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="79"/>
         <source>Temp directory</source>
-        <translation type="unfinished"></translation>
+        <translation>臨時文件夾</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="86"/>
@@ -304,17 +305,17 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="91"/>
         <source>Apply semi transparent to windows and surfaces</source>
-        <translation>窗口和表面顯示半透明</translation>
+        <translation>設置窗口的半透明效果</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="97"/>
         <source>Navigation acrylic effect</source>
-        <translation>亞克力邊欄</translation>
+        <translation>邊欄亞克力效果</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="98"/>
         <source>Apply acrylic to the side navigation bar</source>
-        <translation>調整邊欄的亞克力效果</translation>
+        <translation>設置邊欄的亞克力效果，可能對性能有壹定影響</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="105"/>
@@ -324,7 +325,7 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="106"/>
         <source>Change the appearance of your application</source>
-        <translation>調整妳的應用的外觀</translation>
+        <translation>改變應用的外觀</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="108"/>
@@ -341,7 +342,7 @@ Press shift+Enter to submit.</source>
         <location filename="../../views/interfaces/setting_interface.py" line="128"/>
         <location filename="../../views/interfaces/setting_interface.py" line="136"/>
         <source>Use system setting</source>
-        <translation>跟隨系統設置</translation>
+        <translation>跟隨系統</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="116"/>
@@ -351,17 +352,17 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="117"/>
         <source>Change the theme color of you application</source>
-        <translation>調整妳的應用的主題色</translation>
+        <translation>設置應用的主題色</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="123"/>
         <source>Interface zoom</source>
-        <translation>界面縮放</translation>
+        <translation>窗口放大</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="124"/>
         <source>Change the size of widgets and fonts</source>
-        <translation>調整小部件和字體的大小</translation>
+        <translation>調整窗口和字體大小</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="134"/>
@@ -371,7 +372,7 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="135"/>
         <source>Set your preferred language for UI</source>
-        <translation>選擇界面所使用的語言</translation>
+        <translation>更改使用的語言</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="142"/>
@@ -392,7 +393,7 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="149"/>
         <source>Learn useful tips to use OJ Plus</source>
-        <translation>更好地使用OJ小幫手</translation>
+        <translation>學習OJ Plus如何使用</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="153"/>
@@ -407,32 +408,32 @@ Press shift+Enter to submit.</source>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="157"/>
         <source>Version</source>
-        <translation>當前版本</translation>
+        <translation>版本</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="253"/>
         <source>Choose c path</source>
-        <translation>選擇C編譯器的路徑</translation>
+        <translation>選擇C語言路徑</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="264"/>
         <source>Choose cpp path</source>
-        <translation>選擇C++編譯器的路徑</translation>
+        <translation>選擇C++路徑</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="275"/>
         <source>Choose python path</source>
-        <translation>選擇Python編譯器的路徑</translation>
+        <translation>選擇Python路徑</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="286"/>
         <source>Updated successfully</source>
-        <translation>更新成功</translation>
+        <translation>更改設置成功</translation>
     </message>
     <message>
         <location filename="../../views/interfaces/setting_interface.py" line="287"/>
         <source>Configuration takes effect after restart</source>
-        <translation>配置將在重啟後生效</translation>
+        <translation>修改將在重啟後生效</translation>
     </message>
 </context>
 </TS>

@@ -50,17 +50,17 @@ class _Config(QConfig):
 
     # folders
     input_directory = ConfigItem(
-        "Folders", "inputDirectory", CustomFolderValidator.home(), CustomFolderValidator())
+        "Folders", "InputDirectory", CustomFolderValidator.home(), CustomFolderValidator())
     output_directory = ConfigItem(
-        "Folders", "outputDirectory", CustomFolderValidator.home(), CustomFolderValidator())
+        "Folders", "OutputDirectory", CustomFolderValidator.home(), CustomFolderValidator())
     temp_directory = ConfigItem(
-        "Folders", "tempDirectory", "app/temp", FolderValidator())
+        "Folders", "TempDirectory", "app/temp", FolderValidator())
 
     # main window
     micaEnabled = ConfigItem("MainWindow", "MicaEnabled",
                              is_win11(), BoolValidator())
     navigationAcrylicEnabled = ConfigItem(
-        "MainWindow", "MicaEnabled", True, BoolValidator())
+        "MainWindow", "NavigationAcrylicEnabled", True, BoolValidator())
     dpiScale = OptionsConfigItem("MainWindow", "DpiScale", "Auto", OptionsValidator(
         [1, 1.25, 1.5, 1.75, 2, "Auto"]), restart=True)
     language = OptionsConfigItem("MainWindow", "Language", Language.AUTO, OptionsValidator(

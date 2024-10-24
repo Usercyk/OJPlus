@@ -22,6 +22,7 @@ class CodeTester(QThread):
     compilation_started = Signal()
     compilation_finished = Signal(bool, str)  # success, message
     validation_error = Signal(str)  # error_message
+    test_finished = Signal()
 
     def __init__(self):
         super().__init__()
@@ -201,3 +202,4 @@ class CodeTester(QThread):
                 os.remove(self.temp_code_path)
             except Exception:
                 pass
+        self.test_finished.emit()

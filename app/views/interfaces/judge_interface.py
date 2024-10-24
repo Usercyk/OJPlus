@@ -47,6 +47,8 @@ class JudgeInterface(ScrollArea):
         self.code_tester.compilation_finished.connect(
             self.handle_compilation_finish)
         self.code_tester.validation_error.connect(self.handle_validation_error)
+        self.code_tester.test_finished.connect(
+            lambda: self.result_browser.append(self.tr("Test finished")))
         self.run_signal.connect(self.code_tester.start_testing)
 
     def handle_compilation_start(self) -> None:
